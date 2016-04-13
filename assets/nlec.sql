@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2016 at 04:40 PM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Generation Time: Apr 13, 2016 at 04:33 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `nlec`
@@ -28,8 +28,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `avail_pengajar` (
   `hari` int(1) NOT NULL DEFAULT '0',
-  `jam` time NOT NULL DEFAULT '00:00:00',
-  `id_pengajar` int(6) NOT NULL
+  `jam_mulai` time NOT NULL DEFAULT '00:00:00',
+  `jam_selesai` time NOT NULL DEFAULT '00:00:00',
+  `id_pengajar` int(6) NOT NULL,
+  PRIMARY KEY (`hari`,`jam_mulai`,`jam_selesai`,`id_pengajar`),
+  KEY `id_pengajar` (`id_pengajar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -40,8 +43,11 @@ CREATE TABLE IF NOT EXISTS `avail_pengajar` (
 
 CREATE TABLE IF NOT EXISTS `avail_siswa` (
   `hari` int(1) NOT NULL DEFAULT '0',
-  `jam` time NOT NULL DEFAULT '00:00:00',
-  `id_siswa` int(1) NOT NULL
+  `jam_mulai` time NOT NULL DEFAULT '00:00:00',
+  `jam_selesai` time NOT NULL DEFAULT '00:00:00',
+  `id_siswa` int(1) NOT NULL,
+  PRIMARY KEY (`hari`,`jam_mulai`,`jam_selesai`,`id_siswa`),
+  KEY `id_siswa` (`id_siswa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -54,7 +60,10 @@ CREATE TABLE IF NOT EXISTS `jadwal` (
   `hari` text NOT NULL,
   `jam` time NOT NULL,
   `kode_kelas` varchar(6) NOT NULL,
-  `nomor_ruangan` int(2) NOT NULL
+  `nomor_ruangan` int(2) NOT NULL,
+  PRIMARY KEY (`jam`,`hari`(6)),
+  KEY `kode_kelas` (`kode_kelas`),
+  KEY `nomor_ruangan` (`nomor_ruangan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -67,7 +76,11 @@ CREATE TABLE IF NOT EXISTS `kelas` (
   `kode` varchar(6) NOT NULL,
   `jumlah_siswa` int(2) NOT NULL,
   `id_pengajar` int(6) NOT NULL,
-  `kode_ruangan` int(2) NOT NULL
+  `kode_ruangan` int(2) NOT NULL,
+  PRIMARY KEY (`kode`),
+  KEY `kode` (`kode`),
+  KEY `id_pengajar` (`id_pengajar`),
+  KEY `kode_ruangan` (`kode_ruangan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -80,7 +93,9 @@ CREATE TABLE IF NOT EXISTS `nilai` (
   `id_siswa` int(6) NOT NULL,
   `id_pengajar` int(6) NOT NULL,
   `skor` int(2) NOT NULL,
-  `komentar` text
+  `komentar` text,
+  PRIMARY KEY (`id_siswa`),
+  KEY `id_pengajar` (`id_pengajar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -90,11 +105,12 @@ CREATE TABLE IF NOT EXISTS `nilai` (
 --
 
 CREATE TABLE IF NOT EXISTS `pengajar` (
-  `id` int(6) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `nama` text NOT NULL,
   `alamat` text NOT NULL,
-  `ttl` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `ttl` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -105,7 +121,10 @@ CREATE TABLE IF NOT EXISTS `pengajar` (
 CREATE TABLE IF NOT EXISTS `presensi` (
   `hari` int(1) NOT NULL,
   `status` text NOT NULL,
-  `kode_kelas` varchar(6) NOT NULL
+  `kode_kelas` varchar(6) NOT NULL,
+  PRIMARY KEY (`hari`),
+  KEY `kode_kelas` (`kode_kelas`),
+  KEY `kode_kelas_2` (`kode_kelas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -115,9 +134,10 @@ CREATE TABLE IF NOT EXISTS `presensi` (
 --
 
 CREATE TABLE IF NOT EXISTS `ruangan` (
-  `nomor` int(2) NOT NULL,
-  `kapasitas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `nomor` int(2) NOT NULL AUTO_INCREMENT,
+  `kapasitas` int(11) NOT NULL,
+  PRIMARY KEY (`nomor`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -126,101 +146,15 @@ CREATE TABLE IF NOT EXISTS `ruangan` (
 --
 
 CREATE TABLE IF NOT EXISTS `siswa` (
-  `id` int(6) NOT NULL,
+  `id` int(6) NOT NULL AUTO_INCREMENT,
   `nama` text NOT NULL,
   `alamat` text NOT NULL,
   `ttl` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `kode_kelas` varchar(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `kode_kelas` varchar(6) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `kode_kelas` (`kode_kelas`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `avail_pengajar`
---
-ALTER TABLE `avail_pengajar`
-  ADD PRIMARY KEY (`hari`,`jam`,`id_pengajar`),
-  ADD KEY `id_pengajar` (`id_pengajar`);
-
---
--- Indexes for table `avail_siswa`
---
-ALTER TABLE `avail_siswa`
-  ADD PRIMARY KEY (`hari`,`jam`,`id_siswa`),
-  ADD KEY `id_siswa` (`id_siswa`);
-
---
--- Indexes for table `jadwal`
---
-ALTER TABLE `jadwal`
-  ADD PRIMARY KEY (`jam`,`hari`(6)),
-  ADD KEY `kode_kelas` (`kode_kelas`),
-  ADD KEY `nomor_ruangan` (`nomor_ruangan`);
-
---
--- Indexes for table `kelas`
---
-ALTER TABLE `kelas`
-  ADD PRIMARY KEY (`kode`),
-  ADD KEY `kode` (`kode`),
-  ADD KEY `id_pengajar` (`id_pengajar`),
-  ADD KEY `kode_ruangan` (`kode_ruangan`);
-
---
--- Indexes for table `nilai`
---
-ALTER TABLE `nilai`
-  ADD PRIMARY KEY (`id_siswa`),
-  ADD KEY `id_pengajar` (`id_pengajar`);
-
---
--- Indexes for table `pengajar`
---
-ALTER TABLE `pengajar`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `presensi`
---
-ALTER TABLE `presensi`
-  ADD PRIMARY KEY (`hari`),
-  ADD KEY `kode_kelas` (`kode_kelas`),
-  ADD KEY `kode_kelas_2` (`kode_kelas`);
-
---
--- Indexes for table `ruangan`
---
-ALTER TABLE `ruangan`
-  ADD PRIMARY KEY (`nomor`);
-
---
--- Indexes for table `siswa`
---
-ALTER TABLE `siswa`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `kode_kelas` (`kode_kelas`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `pengajar`
---
-ALTER TABLE `pengajar`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `ruangan`
---
-ALTER TABLE `ruangan`
-  MODIFY `nomor` int(2) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `siswa`
---
-ALTER TABLE `siswa`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
