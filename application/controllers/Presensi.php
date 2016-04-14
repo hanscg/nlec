@@ -9,79 +9,30 @@ class Presensi extends CI_Controller {
 	}
 
 	public function index(){
-		$data['daftar_kelas'] = $this->kelas->get_all_kelas();
+		$data['daftar_kelas'] = $this->presensi->get_kelas_pengajar();
 
 		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-kelas');
-		$this->load->view('kelas/index', $data);
+		$this->load->view('templates/headers/header-presensi');
+		$this->load->view('presensi/index', $data);
 		$this->load->view('templates/footer');
 		$this->load->view('templates/htmlclose');
 	}
 
-	public function tambah(){
-		$data['daftar_pengajar'] = $this->kelas->get_all_pengajar();
-		$data['daftar_ruangan'] = $this->kelas->get_all_ruangan();
-
-		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-kelas');
-		$this->load->view('kelas/form-kelas', $data);
-		$this->load->view('templates/footer');
-		$this->load->view('templates/htmlclose');
-	}
-
-	public function assign(){
-		$data['daftar_siswa'] = $this->kelas->get_all_siswa();
-
-		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-kelas');
-		$this->load->view('kelas/assign-kelas', $data);
-		$this->load->view('templates/footer');
-		$this->load->view('templates/htmlclose');
-	}
-
-	public function form_assign() {
-		$data['siswa'] = $this->kelas->get_siswa($this->input->post('id_siswa'));
-		$data['daftar_kelas'] = $this->kelas->get_all_kelas();
-
-		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-kelas');
-		$this->load->view('kelas/form-assign', $data);
-		$this->load->view('templates/footer');
-		$this->load->view('templates/htmlclose');
-	}
-
-	function addKelas(){
-		$data['kode'] = $this->input->post('kode');
-		$data['id_pengajar'] = $this->input->post('pengajar');
-		$data['kode_ruangan'] = $this->input->post('ruangan');
-		$data['jumlah_siswa'] = 0;
-
-		$result = $this->kelas->insert_kelas($data);
-
-		if($result){
-			$this->session->set_flashdata('success', "Penambahan kelas baru sukses!");
-		}
-		else{
-			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
-		}
-
-		redirect(base_url());
-	}
-
-	function assignKelas() {
-		$data['id'] = $this->input->post('id_siswa');
+	function hadir(){
 		$data['kode_kelas'] = $this->input->post('kode_kelas');
+		$data['status'] = "hadir";
+		$data['hari'] = date("Y-m-d");
 
-		$result = $this->kelas->assign_kelas($data);
+		$result = $this->presensi->insert_presensi($data);
 
 		if($result){
-			$this->session->set_flashdata('success', "Penambahan kelas baru sukses!");
+			$this->session->set_flashdata('success', "Absensi sukses!");
 		}
 		else{
 			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
 		}
 
-		redirect(base_url());
+		redirect(base_url('presensi'));
 	}
 
 }

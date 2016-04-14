@@ -31,7 +31,7 @@
 				<?php endif; ?>
 
 				<div class="bg-light lter b-b wrapper-md padder-md">
-   					<h1 class="m-n font-semibold h4 text-grey padder">Daftar Kelas</h1>
+   					<h1 class="m-n font-semibold h4 text-grey padder">Presensi <?= date("Y-m-d"); ?></h1>
 
 				</div>
 				<div class="row">
@@ -43,9 +43,9 @@
 										<thead>
 											<tr>
 												<th style="width:20%">Kode</th>
-												<th style="width:40%">Jadwal</th>
-												<th style="width:20%">Jumlah peserta</th>
-												<th style="width:20%">Edit/hapus</th>
+												<th style="width:40%">Pengajar</th>
+												<th style="width:20%">Jadwal</th>
+												<th style="width:20%">Hadir</th>
 											</tr>
 	              						</thead>
 		                  				<tbody>
@@ -56,17 +56,20 @@
 			                  						<td>
 			                  							<?= $kelas['kode'] ?>
 			                  						</td>
-			                  						
+			                  							
 			                  						<td>
-			                  							Jadwal
+			                  							<?= $kelas['nama'] ?>
 				                  					</td>
 			                  						
 			                  						<td>
-			                  							<?= $kelas['jumlah_siswa'] ?>
+			                  							Jadwal
 			                  						</td>
 
 			                  						<td>
-			                  							Edit/hapus
+			                  							<form method="post" action="<?php echo base_url('presensi/hadir') ?>" >
+			                  									<input type ="hidden" name = "kode_kelas" value="<?= $kelas['kode'] ?>">
+			                  									<button type="submit" class="btn m-b-sm m-r-sm btn-info btn-sm">Hadir</button>
+			                  							</form>
 			                  						</td>
 			                  					</tr>
 
