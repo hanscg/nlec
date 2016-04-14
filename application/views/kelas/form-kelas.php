@@ -31,9 +31,54 @@
           <div class="col-sm-10">
             <select name="ruangan" class="form-control m-b">
               <?php foreach ($daftar_ruangan as $ruangan) : ?>
-                <option><?= $ruangan['nomor'] ?> (Kapasitas: <?= $ruangan['kapasitas']?>)</option>
+                <option value="<?= $ruangan['nomor'] ?>"><?= $ruangan['nomor'] ?> (Kapasitas: <?= $ruangan['kapasitas']?>)</option>
               <?php endforeach; ?>
             </select>
+          </div>
+        </div>
+        <div class="line line-dashed b-b line-lg pull-in"></div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Jadwal 1</label>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-3">
+                <select name="hari_jadwal_1" class="form-control m-b">
+                  <option value="1"> Senin </option>
+                  <option value="2"> Selasa </option>
+                  <option value="3"> Rabu </option>
+                  <option value="4"> Kamis </option>
+                  <option value="5"> Jumat </option>
+                  <option value="6"> Sabtu </option>
+                  <option value="7"> Minggu </option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                  <input name = "jam_jadwal_1" type="text" value="10:00" class="form-control" placeholder="Masukkan waktu (hh:mm)">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Jadwal 2</label>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col-md-3">
+                <select name="hari_jadwal_2" class="form-control m-b">
+                  <option value="1"> Senin </option>
+                  <option value="2"> Selasa </option>
+                  <option value="3"> Rabu </option>
+                  <option value="4"> Kamis </option>
+                  <option value="5"> Jumat </option>
+                  <option value="6"> Sabtu </option>
+                  <option value="7"> Minggu </option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                  <input name = "jam_jadwal_2" type="text" value="10:00" class="form-control" placeholder="Masukkan waktu (hh:mm)">
+              </div>
+            </div>
           </div>
         </div>
         

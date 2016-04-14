@@ -42,10 +42,9 @@
 									<table ui-jq="dataTable" class="table table-striped b-t b-b">
 										<thead>
 											<tr>
-												<th style="width:20%">Kode</th>
-												<th style="width:40%">Jadwal</th>
-												<th style="width:20%">Jumlah peserta</th>
-												<th style="width:20%">Edit/hapus</th>
+												<th style="width:25%">Kode</th>
+												<th style="width:50%">Jadwal</th>
+												<th style="width:25%">Jumlah peserta</th>
 											</tr>
 	              						</thead>
 		                  				<tbody>
@@ -58,16 +57,43 @@
 			                  						</td>
 			                  						
 			                  						<td>
-			                  							Jadwal
+			                  							<?php 
+			                  								foreach ($daftar_jadwal as $jadwal) {
+			                  									if ($jadwal['kode_kelas'] == $kelas['kode']) {
+			                  										switch ($jadwal['hari']) {
+																	    case 1:
+																	        echo "Senin, ";
+																	        break;
+																	    case 2:
+																	        echo "Selasa, ";
+																	        break;
+																	    case 3:
+																	        echo "Rabu, ";
+																	        break;															        
+																	    case 4:
+																	        echo "Kamis, ";
+																	        break;
+																	    case 5:
+																	        echo "Jumat, ";
+																	        break;
+																	    case 6:
+																	        echo "Sabtu, ";
+																	        break;
+																	    case 7:
+																	        echo "Minggu, ";
+																	        break;
+																	};
+																echo $jadwal['jam'];
+																echo "<br>";        
+			                  									}			
+			                  								}
+			                  							?>
 				                  					</td>
 			                  						
 			                  						<td>
 			                  							<?= $kelas['jumlah_siswa'] ?>
 			                  						</td>
 
-			                  						<td>
-			                  							Edit/hapus
-			                  						</td>
 			                  					</tr>
 
 			                  				<?php endforeach; ?>

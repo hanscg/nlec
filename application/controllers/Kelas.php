@@ -10,6 +10,7 @@ class Kelas extends CI_Controller {
 
 	public function index(){
 		$data['daftar_kelas'] = $this->kelas->get_all_kelas();
+		$data['daftar_jadwal'] = $this->kelas->get_all_jadwal();
 
 		$this->load->view('templates/html');
 		$this->load->view('templates/headers/header-kelas');
@@ -54,7 +55,11 @@ class Kelas extends CI_Controller {
 		$data['kode'] = $this->input->post('kode');
 		$data['id_pengajar'] = $this->input->post('pengajar');
 		$data['kode_ruangan'] = $this->input->post('ruangan');
-		$data['jumlah_siswa'] = 0;
+
+		$data['hari_jadwal_1'] = $this->input->post('hari_jadwal_1');
+		$data['jam_jadwal_1'] = $this->input->post('jam_jadwal_1');
+		$data['hari_jadwal_2'] = $this->input->post('hari_jadwal_2');
+		$data['jam_jadwal_2'] = $this->input->post('jam_jadwal_2');
 
 		$result = $this->kelas->insert_kelas($data);
 
