@@ -11,7 +11,7 @@
         <!-- brand -->
         <a href="<?= base_url() ?>" class="navbar-brand text-lt">          
           <img src="<?= base_url() ?>assets/bdgwebkit/img/logo-small.png" alt="." class="small-logo hide">
-          <img src="<?= base_url() ?>assets/bdgwebkit/img/logo.png" alt="." class="large-logo">
+          <img src="<?= base_url() ?>assets/NLEC_logo.jpg" alt=".">
         </a>
         <!-- / brand -->
       </div>
