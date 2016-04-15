@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2016 at 04:33 PM
+-- Generation Time: Apr 15, 2016 at 03:36 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -57,11 +57,11 @@ CREATE TABLE IF NOT EXISTS `avail_siswa` (
 --
 
 CREATE TABLE IF NOT EXISTS `jadwal` (
-  `hari` text NOT NULL,
+  `hari` int(1) NOT NULL,
   `jam` time NOT NULL,
   `kode_kelas` varchar(6) NOT NULL,
   `nomor_ruangan` int(2) NOT NULL,
-  PRIMARY KEY (`jam`,`hari`(6)),
+  PRIMARY KEY (`jam`,`hari`),
   KEY `kode_kelas` (`kode_kelas`),
   KEY `nomor_ruangan` (`nomor_ruangan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `pengajar` (
   `alamat` text NOT NULL,
   `ttl` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 -- --------------------------------------------------------
 
@@ -119,10 +119,10 @@ CREATE TABLE IF NOT EXISTS `pengajar` (
 --
 
 CREATE TABLE IF NOT EXISTS `presensi` (
-  `hari` int(1) NOT NULL,
+  `hari` date NOT NULL,
   `status` text NOT NULL,
   `kode_kelas` varchar(6) NOT NULL,
-  PRIMARY KEY (`hari`),
+  PRIMARY KEY (`hari`,`kode_kelas`),
   KEY `kode_kelas` (`kode_kelas`),
   KEY `kode_kelas_2` (`kode_kelas`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `ruangan` (
   `nomor` int(2) NOT NULL AUTO_INCREMENT,
   `kapasitas` int(11) NOT NULL,
   PRIMARY KEY (`nomor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -153,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `kode_kelas` varchar(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `kode_kelas` (`kode_kelas`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Constraints for dumped tables
