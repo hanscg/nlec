@@ -44,7 +44,7 @@
 											<tr>
 												<th style="width:20%">Kode</th>
 												<th style="width:40%">Pengajar</th>
-												<th style="width:20%">Jadwal</th>
+												<th style="width:20%">Jam</th>
 												<th style="width:20%">Hadir</th>
 											</tr>
 	              						</thead>
@@ -62,7 +62,7 @@
 				                  					</td>
 			                  						
 			                  						<td>
-			                  							Jadwal
+			                  							<?= $kelas['jam']?>
 			                  						</td>
 
 			                  						<td>
