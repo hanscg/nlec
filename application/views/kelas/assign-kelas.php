@@ -31,7 +31,7 @@
 				<?php endif; ?>
 
 				<div class="bg-light lter b-b wrapper-md padder-md">
-   					<h1 class="m-n font-semibold h4 text-grey padder">Daftar Siswa</h1>
+   					<h1 class="m-n font-semibold h4 text-grey padder">Assign Kelas</h1>
 
 				</div>
 				<div class="row">

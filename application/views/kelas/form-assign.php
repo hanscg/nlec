@@ -2,14 +2,14 @@
   
   <div class="panel panel-default">
     <div class="panel-heading font-bold">
-      <h1 class="m-n font-semibold h4 text-grey padder">Tambah Kelas</h1>
+      <h1 class="m-n font-semibold h4 text-grey padder">Pilih Kelas</h1>
     </div>
     <div class="panel-body">
       <form class="form-horizontal" method="post" action="<?php echo base_url('kelas/assignKelas') ?>" role="form">
          <div class="form-group">
           <label class="col-sm-2 control-label">Nama</label>
           <div class="col-sm-10">
-            <input name="nama" type="text" class="form-control" value=<?= $siswa['nama']?> disabled>
+            <input name="nama" type="text" class="form-control" value="<?= $siswa['nama']?>" disabled>
           </div>
         </div>
         <div class="line line-dashed b-b line-lg pull-in"></div>

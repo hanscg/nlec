@@ -70,7 +70,7 @@ class Kelas extends CI_Controller {
 			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
 		}
 
-		redirect(base_url());
+		redirect(base_url(kelas));
 	}
 
 	function assignKelas() {
@@ -80,13 +80,13 @@ class Kelas extends CI_Controller {
 		$result = $this->kelas->assign_kelas($data);
 
 		if($result){
-			$this->session->set_flashdata('success', "Penambahan kelas baru sukses!");
+			$this->session->set_flashdata('success', "Pemilihan kelas sukses!");
 		}
 		else{
 			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
 		}
 
-		redirect(base_url());
+		redirect(base_url(kelas/assign));
 	}
 
 }
