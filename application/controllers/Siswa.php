@@ -42,4 +42,13 @@ class Siswa extends CI_Controller {
 
 		redirect(base_url());
 	}
+
+	public function edit($id){
+		$data['data_siswa'] = $this->siswa->get_siswa($id);
+		$this->load->view('templates/html');
+		$this->load->view('templates/headers/header-siswa');
+		$this->load->view('siswa/form-update',$data);
+		$this->load->view('templates/footer');
+		$this->load->view('templates/htmlclose');
+	}
 }

@@ -42,10 +42,12 @@
 									<table ui-jq="dataTable" class="table table-striped b-t b-b">
 										<thead>
 											<tr>
-												<th style="width:25%">Nama</th>
+												<th style="width:20%">Nama</th>
 												<th style="width:35%">Alamat</th>
-												<th style="width:25%">Tanggal Lahir</th>
+												<th style="width:20%">Tanggal Lahir</th>
 												<th style="width:15%">Kelas</th>
+												<th style="width: 5%"></th>
+												<th style="width: 5%"></th>
 											</tr>
 	              						</thead>
 		                  				<tbody>
@@ -68,6 +70,14 @@
 			                  						<td>
 			                  							<?= $siswa['kode_kelas']	?>
 			                  						</td>
+
+			                  						<td>
+			                  							<a href="<?= base_url('siswa/edit/'.$siswa['id']) ?>" class="btn m-b-sm m-r-sm btn-sm btn-icon btn-warning"><i class="fa fa-edit"></i></a>
+			                  						</td>
+
+					                  				<td>
+					                  					<a type="button" class="btn m-b-sm m-r-sm btn-sm btn-icon btn-danger" data-toggle="modal" data-target="#exampleModal" data-diklat="<?= $siswa['nama'] ?>" data-siswaid ="<?= $siswa['id'] ?>"><i class="fa fa-trash-o"></i></a> 
+					                  				</td>
 			                  					</tr>
 
 			                  				<?php endforeach; ?>
@@ -87,10 +97,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Hapus Diklat</h4>
+        <h4 class="modal-title" id="exampleModalLabel">Hapus Siswa</h4>
       </div>
       <div class="modal-body">
-        Apa kamu yakin akan menghapus diklat
+        Apa kamu yakin akan menghapus siswa
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
@@ -99,3 +109,5 @@
     </div>
   </div>
 </div>
+
+			                  						<td> 

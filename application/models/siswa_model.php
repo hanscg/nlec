@@ -15,7 +15,7 @@ class Siswa_model extends CI_Model {
 
 	public function get_siswa($id){
 		$this->db->where('id', $id);
-		$query = $this->db->select('siswa');
+		$query = $this->db->get('siswa');
 
 		return $query->row_array();
 	}
