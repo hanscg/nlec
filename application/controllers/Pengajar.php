@@ -40,7 +40,7 @@ class Pengajar extends CI_Controller {
 			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
 		}
 
-		redirect(base_url());
+		redirect(base_url(pengajar));
 	}
 
 	public function detail($id){

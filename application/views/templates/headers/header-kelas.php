@@ -37,7 +37,7 @@
             <a href="<?= base_url('kelas') ?>">KELAS</a>
           </li>
           <li>
-            <a href="<?= base_url('') ?>">PRESENSI PENGAJAR</a>
+            <a href="<?= base_url('presensi') ?>">PRESENSI PENGAJAR</a>
           </li>
           <li>
             <a href="<?= base_url() ?>">NILAI</a>
