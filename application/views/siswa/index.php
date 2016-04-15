@@ -46,8 +46,6 @@
 												<th style="width:35%">Alamat</th>
 												<th style="width:20%">Tanggal Lahir</th>
 												<th style="width:15%">Kelas</th>
-												<th style="width: 5%"></th>
-												<th style="width: 5%"></th>
 											</tr>
 	              						</thead>
 		                  				<tbody>
@@ -57,6 +55,7 @@
 			                  						
 			                  						<td>
 			                  							<a href="<?= base_url('siswa/detail') ?>/<?= $siswa['id'] ?>"><?= $siswa['nama'] ?>
+			                  							</a>
 			                  						</td>
 			                  						
 			                  						<td>
@@ -71,13 +70,6 @@
 			                  							<?= $siswa['kode_kelas']	?>
 			                  						</td>
 
-			                  						<td>
-			                  							<a href="<?= base_url('siswa/edit/'.$siswa['id']) ?>" class="btn m-b-sm m-r-sm btn-sm btn-icon btn-warning"><i class="fa fa-edit"></i></a>
-			                  						</td>
-
-					                  				<td>
-					                  					<a type="button" class="btn m-b-sm m-r-sm btn-sm btn-icon btn-danger" data-toggle="modal" data-target="#exampleModal" data-diklat="<?= $siswa['nama'] ?>" data-siswaid ="<?= $siswa['id'] ?>"><i class="fa fa-trash-o"></i></a> 
-					                  				</td>
 			                  					</tr>
 
 			                  				<?php endforeach; ?>

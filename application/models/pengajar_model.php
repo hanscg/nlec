@@ -15,7 +15,7 @@ class Pengajar_model extends CI_Model {
 
 	public function get_pengajar($id){
 		$this->db->where('id', $id);
-		$query = $this->db->select('pengajar');
+		$query = $this->db->get('pengajar');
 
 		return $query->row_array();
 	}

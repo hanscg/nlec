@@ -46,7 +46,8 @@
 			                  					<tr>
 			                  						
 			                  						<td>
-			                  							<?= $pengajar['nama'] ?>
+			                  							<a href="<?= base_url('pengajar/detail') ?>/<?= $pengajar['id'] ?>"><?= $pengajar['nama'] ?>
+			                  							</a>
 			                  						</td>
 			                  						
 			                  						<td>
