@@ -56,7 +56,7 @@
 			                  					<tr>
 			                  						
 			                  						<td>
-			                  							<?= $siswa['nama'] ?>
+			                  							<a href="<?= base_url('siswa/detail') ?>/<?= $siswa['id'] ?>"><?= $siswa['nama'] ?>
 			                  						</td>
 			                  						
 			                  						<td>

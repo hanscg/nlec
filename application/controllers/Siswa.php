@@ -14,7 +14,7 @@ class Siswa extends CI_Controller {
 		$this->load->view('templates/html');
 		$this->load->view('templates/headers/header-siswa');
 		$this->load->view('siswa/index', $data);
-		$this->load->view('templates/footer');
+		
 		$this->load->view('templates/htmlclose');
 	}
 
@@ -22,7 +22,7 @@ class Siswa extends CI_Controller {
 		$this->load->view('templates/html');
 		$this->load->view('templates/headers/header-siswa');
 		$this->load->view('siswa/form-pendaftaran');
-		$this->load->view('templates/footer');
+		
 		$this->load->view('templates/htmlclose');
 	}
 
@@ -48,7 +48,14 @@ class Siswa extends CI_Controller {
 		$this->load->view('templates/html');
 		$this->load->view('templates/headers/header-siswa');
 		$this->load->view('siswa/form-update',$data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/htmlclose');
+	}
+
+	public function detail($id){
+		$data['data_siswa'] = $this->siswa->get_siswa($id);
+		$this->load->view('templates/html');
+		$this->load->view('templates/headers/header-siswa');
+		$this->load->view('siswa/detail',$data);
 		$this->load->view('templates/htmlclose');
 	}
 }
