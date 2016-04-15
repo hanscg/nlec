@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2016 at 03:36 AM
+-- Generation Time: Apr 15, 2016 at 06:05 AM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -108,9 +108,9 @@ CREATE TABLE IF NOT EXISTS `pengajar` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `nama` text NOT NULL,
   `alamat` text NOT NULL,
-  `ttl` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ttl` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `ruangan` (
   `nomor` int(2) NOT NULL AUTO_INCREMENT,
   `kapasitas` int(11) NOT NULL,
   PRIMARY KEY (`nomor`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -149,11 +149,11 @@ CREATE TABLE IF NOT EXISTS `siswa` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `nama` text NOT NULL,
   `alamat` text NOT NULL,
-  `ttl` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ttl` date NOT NULL,
   `kode_kelas` varchar(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `kode_kelas` (`kode_kelas`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Constraints for dumped tables
