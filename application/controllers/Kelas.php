@@ -6,6 +6,7 @@ class Kelas extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('kelas_model', 'kelas'); // kelas alias dari kelas_model
+		$this->load->model('pengajar_model', 'pengajar'); // pengajar alias dari pengajar_model
 	}
 
 	public function index(){
@@ -87,6 +88,15 @@ class Kelas extends CI_Controller {
 		}
 
 		redirect(base_url(kelas/assign));
+	}
+
+	function detail($kode){
+		$data['data_kelas'] = $this->kelas->get_kelas($kode);
+		$data['data_pengajar'] = $this->pengajar->get_pengajar($data['data_kelas']['id_pengajar']);
+		$this->load->view('templates/html');
+		$this->load->view('templates/headers/header-kelas');
+		$this->load->view('kelas/detail',$data);
+		$this->load->view('templates/htmlclose');
 	}
 
 }

@@ -13,9 +13,9 @@ class Kelas_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function get_kelas($id){
-		$this->db->where('id', $id);
-		$query = $this->db->select('kelas');
+	public function get_kelas($kode){
+		$this->db->where('kode', $kode);
+		$query = $this->db->get('kelas');
 
 		return $query->row_array();
 	}

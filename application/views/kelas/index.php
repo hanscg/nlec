@@ -53,7 +53,7 @@
 			                  					<tr>
 			                  						
 			                  						<td>
-			                  							<?= $kelas['kode'] ?>
+			                  							<a href="<?= base_url('kelas/detail') ?>/<?= $kelas['kode'] ?>"><?= $kelas['kode'] ?>
 			                  						</td>
 			                  						
 			                  						<td>

@@ -21,24 +21,31 @@
 				</div>
 				
 				<div class="bg-light b-b wrapper-md padder-md ">
-					<h1 class="m-n font-bold h4 padder" >Detail Siswa</h1>
+					<h1 class="m-n font-bold h4 padder" >Detail Kelas</h1>
 				</div>
 				<div class="wrapper-lg bg-light">
 					<div class="row">
 						<div class="col-md-3">
 							<h4 class="m-t-lg font-bold text12">
-								Nama Siswa
+								Kode Kelas
 							</h4>
 							<p>
-								<?= $data_siswa['nama'] ?>
+								<?= $data_kelas['kode'] ?>
 							</p>
 						</div>
 					</div>
 					<h4 class="m-t-lg font-bold text12">
-						Tanggal Lahir Siswa
+						Jumlah Siswa
 					</h4>
 					<p>
-						<?= $data_siswa['ttl']?>
+						<?= $data_kelas['jumlah_siswa']?>
+					</p>
+					<br/>
+					<h4 class="m-t-lg font-bold text12">
+						Nama Pengajar
+					</h4>
+					<p>
+						<?= $data_pengajar['nama']?>
 					</p>
 					<br/>
 					<!-- content -->
@@ -52,7 +59,7 @@
 					              <div class="col-md-12">
 					                 <div class="panel panel-default">
 					              <div class="panel-heading font-semibold">
-					                Jadwal Siswa
+					                Jadwal kelas
 					              </div>
 					              <div>
 					                <table class="table" ui-jq="footable" ui-options='{
