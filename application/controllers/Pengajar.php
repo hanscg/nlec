@@ -46,8 +46,9 @@ class Pengajar extends CI_Controller {
 	public function detail($id){
 		$data['data_siswa'] = $this->pengajar->get_pengajar($id);
 		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-siswa');
-		$this->load->view('pengajar/detail',$data);
+		$this->load->view('templates/headers/header-pengajar');
+		$this->load->view('pengajar/detail',$data);		
+		$this->load->view('templates/footer');
 		$this->load->view('templates/htmlclose');
 	}
 }

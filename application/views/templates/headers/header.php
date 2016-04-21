@@ -40,7 +40,7 @@
             <a href="<?= base_url('presensi') ?>">PRESENSI PENGAJAR</a>
           </li>
           <li>
-            <a href="<?= base_url() ?>">PENGGAJIAN</a>
+            <a href="<?= base_url('penggajian') ?>">PENGGAJIAN</a>
           </li>
         </ul>
         <!-- / link and dropdown -->

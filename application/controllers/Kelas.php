@@ -95,6 +95,8 @@ class Kelas extends CI_Controller {
 		$data['data_kelas'] = $this->kelas->get_kelas($kode);
 		$data['data_pengajar'] = $this->pengajar->get_pengajar($data['data_kelas']['id_pengajar']);
 		$data['data_siswa'] = $this->siswa->get_siswas_by_kode_kelas($data['data_kelas']['kode']);
+		$data['daftar_jadwal'] = $this->kelas->get_all_jadwal();
+		
 		$this->load->view('templates/html');
 		$this->load->view('templates/headers/header-kelas');
 		$this->load->view('kelas/detail', $data);
@@ -118,6 +120,7 @@ class Kelas extends CI_Controller {
 		$data['id_pengajar'] = $this->input->post('id_pengajar');
 		$data['skor'] = $this->input->post('skor');
 		$data['komentar'] = $this->input->post('komentar');
+		$kode_kelas = $this->input->post('kode_kelas');
 
 		$result = $this->kelas->assign_nilai($data);
 
@@ -128,7 +131,7 @@ class Kelas extends CI_Controller {
 			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
 		}
 
-		redirect(base_url('kelas/detail/'.$data['id_siswa']['kode_kelas']));
+		redirect(base_url('kelas/detail/'.$kode_kelas));
 	}
 
 }

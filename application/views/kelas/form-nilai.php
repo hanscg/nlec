@@ -2,7 +2,7 @@
   
   <div class="panel panel-default">
     <div class="panel-heading font-bold">
-      <h1 class="m-n font-semibold h4 text-grey padder">Pilih Kelas</h1>
+      <h1 class="m-n font-semibold h4 text-grey padder">Isi Nilai</h1>
     </div>
     <div class="panel-body">
       <form class="form-horizontal" method="post" action="<?php echo base_url('kelas/assignNilai') ?>" role="form">
@@ -35,6 +35,7 @@
         <div class="line line-dashed b-b line-lg pull-in"></div>
         <input type ="hidden" name = "id_siswa" value="<?= $siswa['id'] ?>">
         <input type ="hidden" name = "id_pengajar" value="<?= $pengajar['id'] ?>">
+        <input type ="hidden" name = "kode_kelas" value="<?= $kelas['kode'] ?>">
         <div class="form-group">
           <div class="col-sm-4 col-sm-offset-2">
             <button type="" class="btn btn-default m-r-sm">Batalkan</button>

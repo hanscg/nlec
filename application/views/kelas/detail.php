@@ -48,67 +48,44 @@
 						<?= $data_pengajar['nama']?>
 					</p>
 					<br/>
-					<!-- content -->
-					  
-
-				    <div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
-				      <div class="col">
-				        	<div class="app-content-body ">
-
-				            <div class="row">
-				              <div class="col-md-12">
-				                 <div class="panel panel-default">
-				              <div class="panel-heading font-semibold">
-				                Jadwal kelas
-				              </div>
-				              <div>
-				                <table class="table" ui-jq="footable" ui-options='{
-				                  "paging": {
-				                    "enabled": true
-				                  }}'>
-				                  <thead>
-				                    <tr>
-				                      <th>Hari</th>
-				                      <th>Jam</th>
-				                      
-				                    </tr>
-				                  </thead>
-				                  <tbody>
-				                    <tr data-expanded="true">
-				                      <td>Senin</td>
-				                      <td>13.00 - 14.00</td>
-				                    </tr>
-				                    <tr>
-				                      <td>Selasa</td>
-				                      <td>-</td>
-				                    </tr>
-				                    <tr>
-				                      <td>Rabu</td>
-				                      <td>-</td>
-				                    </tr>
-				                    <tr>
-				                      <td>Kamis</td>
-				                      <td>15.00 - 16.00</td>
-				                    </tr>
-				                    <tr>
-				                      <td>Jumat</td>
-				                      <td>16.00 - 17.00</td>					                      
-				                    </tr>
-				                    <tr>
-				                      <td>Sabtu</td>
-				                      <td>-</td>
-				                    </tr>
-				                  </tbody>
-				                </table>
-				              </div>
-				            </div>
-				              </div>
-				            </div>
-				          </div>
-				      	 </div>
-				         <!-- div app content body -->
-				      </div>
-				      <!-- div.col -->
+					<h4 class="m-t-lg font-bold text12">
+						Jadwal
+					</h4>
+					<p>
+						<?php 
+			                foreach ($daftar_jadwal as $jadwal) {
+			                  	if ($jadwal['kode_kelas'] == $data_kelas['kode']) {
+			                  		switch ($jadwal['hari']) {
+										case 1:
+											echo "Senin, ";
+											break;
+										case 2:
+											echo "Selasa, ";
+											break;
+										case 3:
+											echo "Rabu, ";
+											break;															        
+										case 4:
+											echo "Kamis, ";
+											break;
+										case 5:
+											echo "Jumat, ";
+											break;
+										case 6:
+											echo "Sabtu, ";
+											break;
+										case 7:
+											echo "Minggu, ";
+												break;
+									};
+									echo $jadwal['jam'];
+									echo "<br>";        
+			                  	}			
+			                }
+			            ?>
+					</p>
+					<br/>
+					
 
 				      <div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
 				      <div class="col">
