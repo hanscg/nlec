@@ -40,9 +40,6 @@
             <a href="<?= base_url('presensi') ?>">PRESENSI PENGAJAR</a>
           </li>
           <li>
-            <a href="<?= base_url('nilai') ?>">NILAI</a>
-          </li>
-          <li>
             <a href="<?= base_url() ?>">PENGGAJIAN</a>
           </li>
         </ul>

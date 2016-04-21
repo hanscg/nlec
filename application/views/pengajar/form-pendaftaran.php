@@ -26,6 +26,89 @@
           <input type="date" name="ttl">  
         </div>
         
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Preferensi jadwal</label>
+          <div class="col-sm-10">
+            <label class="checkbox-inline i-checks">
+              <input type="checkbox" value="option1"><i></i> Senin
+              <select class="form-control">
+                <option>-</option>
+                <option>10.00 - 11.00</option>
+                <option>12.00 - 13.00</option>
+                <option>13.00 - 14.00</option>
+                <option>14.00 - 15.00</option>
+                <option>15.00 - 16.00</option>
+                <option>17.00 - 18.00</option>
+              </select>
+            </label>
+            <br>
+            <label class="checkbox-inline i-checks">
+              <input type="checkbox" value="option2"><i></i> Selasa
+              <select class="form-control">
+                <option>-</option>
+                <option>10.00 - 11.00</option>
+                <option>12.00 - 13.00</option>
+                <option>13.00 - 14.00</option>
+                <option>14.00 - 15.00</option>
+                <option>15.00 - 16.00</option>
+                <option>17.00 - 18.00</option>
+              </select>
+            </label>
+            <br>
+            <label class="checkbox-inline i-checks">
+              <input type="checkbox" value="option3"><i></i> Rabu
+              <select class="form-control">
+                <option>-</option>
+                <option>10.00 - 11.00</option>
+                <option>12.00 - 13.00</option>
+                <option>13.00 - 14.00</option>
+                <option>14.00 - 15.00</option>
+                <option>15.00 - 16.00</option>
+                <option>17.00 - 18.00</option>
+              </select>
+            </label>
+            <br>
+            <label class="checkbox-inline i-checks">
+              <input type="checkbox" value="option3"><i></i> Kamis
+              <select class="form-control">
+                <option>-</option>
+                <option>10.00 - 11.00</option>
+                <option>12.00 - 13.00</option>
+                <option>13.00 - 14.00</option>
+                <option>14.00 - 15.00</option>
+                <option>15.00 - 16.00</option>
+                <option>17.00 - 18.00</option>
+              </select>
+            </label>
+            <br>
+            <label class="checkbox-inline i-checks">
+              <input type="checkbox" value="option3"><i></i> Jumat
+              <select class="form-control">
+                <option>-</option>
+                <option>10.00 - 11.00</option>
+                <option>12.00 - 13.00</option>
+                <option>13.00 - 14.00</option>
+                <option>14.00 - 15.00</option>
+                <option>15.00 - 16.00</option>
+                <option>17.00 - 18.00</option>
+              </select>
+            </label>
+            <br>
+            <label class="checkbox-inline i-checks">
+              <input type="checkbox" value="option3"><i></i> Sabtu
+              <select class="form-control">
+                <option>-</option>
+                <option>10.00 - 11.00</option>
+                <option>12.00 - 13.00</option>
+                <option>13.00 - 14.00</option>
+                <option>14.00 - 15.00</option>
+                <option>15.00 - 16.00</option>
+                <option>17.00 - 18.00</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        
         <!-- <div class="line line-dashed b-b line-lg pull-in"></div>
 
         <div class="form-group">
