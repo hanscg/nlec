@@ -90,4 +90,13 @@ class Kelas_model extends CI_Model {
 
 		return $this->db->affected_rows();
 	}
+
+	public function assign_nilai($data){
+		$query = $this->db->insert('nilai', $data);
+
+		if($query)
+			return true;
+		else
+			return false;
+	}
 }

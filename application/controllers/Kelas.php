@@ -7,6 +7,7 @@ class Kelas extends CI_Controller {
 		parent::__construct();
 		$this->load->model('kelas_model', 'kelas'); // kelas alias dari kelas_model
 		$this->load->model('pengajar_model', 'pengajar'); // pengajar alias dari pengajar_model
+		$this->load->model('siswa_model', 'siswa'); // siswa alias dari siswa_model
 	}
 
 	public function index(){
@@ -71,7 +72,7 @@ class Kelas extends CI_Controller {
 			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
 		}
 
-		redirect(base_url(kelas));
+		redirect(base_url('kelas'));
 	}
 
 	function assignKelas() {
@@ -87,16 +88,47 @@ class Kelas extends CI_Controller {
 			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
 		}
 
-		redirect(base_url(kelas/assign));
+		redirect(base_url('kelas/assign'));
 	}
 
 	function detail($kode){
 		$data['data_kelas'] = $this->kelas->get_kelas($kode);
 		$data['data_pengajar'] = $this->pengajar->get_pengajar($data['data_kelas']['id_pengajar']);
+		$data['data_siswa'] = $this->siswa->get_siswas_by_kode_kelas($data['data_kelas']['kode']);
 		$this->load->view('templates/html');
 		$this->load->view('templates/headers/header-kelas');
-		$this->load->view('kelas/detail',$data);
+		$this->load->view('kelas/detail', $data);
 		$this->load->view('templates/htmlclose');
+	}
+
+	function form_nilai(){
+		$data['siswa'] = $this->siswa->get_siswa($this->input->post('id_siswa'));
+		$data['kelas'] = $this->kelas->get_kelas($data['siswa']['kode_kelas']);
+		$data['pengajar'] = $this->pengajar->get_pengajar($data['kelas']['id_pengajar']);
+
+		$this->load->view('templates/html');
+		$this->load->view('templates/headers/header-kelas');
+		$this->load->view('kelas/form-nilai', $data);
+		$this->load->view('templates/footer');
+		$this->load->view('templates/htmlclose');
+	}
+
+	function assignNilai(){
+		$data['id_siswa'] = $this->input->post('id_siswa');
+		$data['id_pengajar'] = $this->input->post('id_pengajar');
+		$data['skor'] = $this->input->post('skor');
+		$data['komentar'] = $this->input->post('komentar');
+
+		$result = $this->kelas->assign_nilai($data);
+
+		if($result){
+			$this->session->set_flashdata('success', "Assign nilai sukses!");
+		}
+		else{
+			$this->session->set_flashdata('error', "Maaf ada kesalahan di Server, silakan coba beberapa saat lagi.");
+		}
+
+		redirect(base_url('kelas/detail/'.$data['id_siswa']['kode_kelas']));
 	}
 
 }

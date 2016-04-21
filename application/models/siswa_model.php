@@ -20,6 +20,23 @@ class Siswa_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function get_siswas_by_kode_kelas($kode_kelas){
+		$this->db->select('*');
+		$this->db->from('siswa');
+		$this->db->join('nilai', 'nilai.id_siswa = siswa.id', 'left');
+		$this->db->where('kode_kelas', $kode_kelas);
+		$query = $this->db->get();
+
+		return $query->result_array();
+	}
+
+	/*public function get_siswas_by_kode_kelas($kode_kelas){
+		$this->db->where('kode_kelas', $kode_kelas);
+		$query = $this->db->get('siswa');
+
+		return $query->result_array();
+	}*/
+
 	public function insert_siswa($data){
 		$query = $this->db->insert('siswa', $data);
 

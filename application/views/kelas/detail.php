@@ -51,66 +51,128 @@
 					<!-- content -->
 					  
 
-					    <div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
-					      <div class="col">
-					        	<div class="app-content-body ">
+				    <div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
+				      <div class="col">
+				        	<div class="app-content-body ">
 
-					            <div class="row">
-					              <div class="col-md-12">
-					                 <div class="panel panel-default">
-					              <div class="panel-heading font-semibold">
-					                Jadwal kelas
-					              </div>
-					              <div>
-					                <table class="table" ui-jq="footable" ui-options='{
-					                  "paging": {
-					                    "enabled": true
-					                  }}'>
-					                  <thead>
-					                    <tr>
-					                      <th>Hari</th>
-					                      <th>Jam</th>
-					                      
-					                    </tr>
-					                  </thead>
-					                  <tbody>
-					                    <tr data-expanded="true">
-					                      <td>Senin</td>
-					                      <td>13.00 - 14.00</td>
-					                    </tr>
-					                    <tr>
-					                      <td>Selasa</td>
-					                      <td>-</td>
-					                    </tr>
-					                    <tr>
-					                      <td>Rabu</td>
-					                      <td>-</td>
-					                    </tr>
-					                    <tr>
-					                      <td>Kamis</td>
-					                      <td>15.00 - 16.00</td>
-					                    </tr>
-					                    <tr>
-					                      <td>Jumat</td>
-					                      <td>16.00 - 17.00</td>					                      
-					                    </tr>
-					                    <tr>
-					                      <td>Sabtu</td>
-					                      <td>-</td>
-					                    </tr>
-					                  </tbody>
-					                </table>
-					              </div>
-					            </div>
-					              </div>
-					            </div>
-					          </div>
-					      	 </div>
-					         <!-- div app content body -->
-					      </div>
-					      <!-- div.col -->
-					    </div>
-					    <!-- end hbox hbox-auto-xs -->
+				            <div class="row">
+				              <div class="col-md-12">
+				                 <div class="panel panel-default">
+				              <div class="panel-heading font-semibold">
+				                Jadwal kelas
+				              </div>
+				              <div>
+				                <table class="table" ui-jq="footable" ui-options='{
+				                  "paging": {
+				                    "enabled": true
+				                  }}'>
+				                  <thead>
+				                    <tr>
+				                      <th>Hari</th>
+				                      <th>Jam</th>
+				                      
+				                    </tr>
+				                  </thead>
+				                  <tbody>
+				                    <tr data-expanded="true">
+				                      <td>Senin</td>
+				                      <td>13.00 - 14.00</td>
+				                    </tr>
+				                    <tr>
+				                      <td>Selasa</td>
+				                      <td>-</td>
+				                    </tr>
+				                    <tr>
+				                      <td>Rabu</td>
+				                      <td>-</td>
+				                    </tr>
+				                    <tr>
+				                      <td>Kamis</td>
+				                      <td>15.00 - 16.00</td>
+				                    </tr>
+				                    <tr>
+				                      <td>Jumat</td>
+				                      <td>16.00 - 17.00</td>					                      
+				                    </tr>
+				                    <tr>
+				                      <td>Sabtu</td>
+				                      <td>-</td>
+				                    </tr>
+				                  </tbody>
+				                </table>
+				              </div>
+				            </div>
+				              </div>
+				            </div>
+				          </div>
+				      	 </div>
+				         <!-- div app content body -->
+				      </div>
+				      <!-- div.col -->
+
+				      <div class="hbox hbox-auto-xs hbox-auto-sm ng-scope">
+				      <div class="col">
+				        	<div class="app-content-body ">
+
+				            <div class="row">
+				              <div class="col-md-12">
+				                 <div class="panel panel-default">
+				              <div class="panel-heading font-semibold">
+				                Daftar Siswa
+				              </div>
+				              <div>
+				                <table class="table" ui-jq="footable" ui-options='{
+				                  "paging": {
+				                    "enabled": true
+				                  }}'>
+				                  <thead>
+				                    <tr>
+				                      <th>Nama</th>
+				                      <th>Nilai</th>
+				                      <th>Komentar</th>
+				                    </tr>
+				                  </thead>
+				                  <tbody>
+				                  	<?php foreach($data_siswa as $siswa): ?>
+				                    <tr>
+				                      <td><?php echo $siswa['nama']; ?></td>
+				                      <td>
+				                      	<?php
+				                      		if($siswa['skor'] != null)
+				                      			echo $siswa['skor'];
+				                      		else { ?>
+				                      			<form method="post" action="<?php echo base_url('kelas/form_nilai') ?>" >
+	              									<input type ="hidden" name = "id_siswa" value="<?= $siswa['id'] ?>">
+	              									<button type="submit" class="btn m-b-sm m-r-sm btn-info btn-sm">Isi nilai</button>
+	              								</form>
+				                      		<?php } ?>
+				                      </td>
+				                      <td>
+				                      	<?php
+				                      		if($siswa['skor'] != null)
+				                      			echo $siswa['komentar'];
+				                      		else
+				                      			echo "-";
+				                      	?>
+				                      </td>
+				                    </tr>
+				                	<?php endforeach; ?>
+				                  </tbody>
+				                </table>
+				              </div>
+				            </div>
+				              </div>
+				            </div>
+				          </div>
+				      	 </div>
+				         <!-- div app content body -->
+				      </div>
+				      <!-- div.col -->
+				    
+				    </div>
+				    <!-- end hbox hbox-auto-xs -->
+
+
 
 
 				</div>
