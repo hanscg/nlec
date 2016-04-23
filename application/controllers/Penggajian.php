@@ -18,7 +18,7 @@ class Penggajian extends CI_Controller {
  		{	
  			$this->load->view('templates/html');
  			$this->load->view('templates/headers/header-penggajian');
- 			$this->load->view('siswa/index', $data);
+ 			$this->load->view('penggajian/index', $data);
  			$this->load->view('templates/htmlclose');
  		}
 	}
