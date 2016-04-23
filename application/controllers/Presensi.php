@@ -11,11 +11,15 @@ class Presensi extends CI_Controller {
 	public function index(){
 		$data['daftar_kelas'] = $this->presensi->get_kelas_pengajar();
 
-		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-presensi');
-		$this->load->view('presensi/index', $data);
-		$this->load->view('templates/footer');
-		$this->load->view('templates/htmlclose');
+		if(!$this->session->userdata('admin')){
+			redirect('admin');
+		}
+		else{
+			$this->load->view('templates/html');
+			$this->load->view('templates/headers/header-presensi');
+			$this->load->view('presensi/index', $data);
+			$this->load->view('templates/htmlclose');
+		}
 	}
 
 	function hadir(){

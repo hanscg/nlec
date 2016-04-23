@@ -1,0 +1,13 @@
+.app{
+	background-color: #f4f5f5;
+}
+
+.black{
+	background-color: black;
+}
+
+.add-button{
+	margin: 0 auto;
+	position: relative;
+	float: right;
+}

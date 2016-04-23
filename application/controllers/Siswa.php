@@ -11,11 +11,16 @@ class Siswa extends CI_Controller {
 	public function index(){
 		$data['daftar_siswa'] = $this->siswa->get_siswas();
 
-		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-siswa');
-		$this->load->view('siswa/index', $data);
-		
-		$this->load->view('templates/htmlclose');
+		if(!$this->session->userdata('admin')){
+			redirect('admin');
+		}
+		else
+		{	
+			$this->load->view('templates/html');
+			$this->load->view('templates/headers/header-siswa');
+			$this->load->view('siswa/index', $data);
+			$this->load->view('templates/htmlclose');
+		}
 	}
 
 	public function tambah(){

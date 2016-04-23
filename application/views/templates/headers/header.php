@@ -47,18 +47,8 @@
 
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
-              <i class="icon-bdg_search text14"></i>              
-            </a>
-            <!-- dropdown -->
-             <div class="search_wrapper pull-right w-xl animated fadeIn">
-              <form action="<?= base_url('cari_diklat') ?>" method="GET">
-                <i class="pull-left glyphicon glyphicon-search"></i>
-                  <input type="text" name="q" class="pull-left" placeholder="Type Here">
-                <a href="#" class="remove-search"><i class="pull-right icon-bdg_cross"></i></a>
-              </form>
-            </div>
+          <li>
+            <a href="<?= base_url('admin/signout') ?>">KELUAR</a>
             <!-- / dropdown -->
           </li>
         </ul>

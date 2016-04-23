@@ -11,11 +11,15 @@ class Pengajar extends CI_Controller {
 	public function index(){
 		$data['daftar_pengajar'] = $this->pengajar->get_pengajars();
 
-		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-pengajar');
-		$this->load->view('pengajar/index', $data);
-		$this->load->view('templates/footer');
-		$this->load->view('templates/htmlclose');
+		if(!$this->session->userdata('admin')){
+			redirect('admin');
+		}
+		else{
+			$this->load->view('templates/html');
+			$this->load->view('templates/headers/header-pengajar');
+			$this->load->view('pengajar/index', $data);
+			$this->load->view('templates/htmlclose');
+		}
 	}
 
 	public function tambah(){

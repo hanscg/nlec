@@ -14,11 +14,15 @@ class Kelas extends CI_Controller {
 		$data['daftar_kelas'] = $this->kelas->get_all_kelas();
 		$data['daftar_jadwal'] = $this->kelas->get_all_jadwal();
 
-		$this->load->view('templates/html');
-		$this->load->view('templates/headers/header-kelas');
-		$this->load->view('kelas/index', $data);
-		$this->load->view('templates/footer');
-		$this->load->view('templates/htmlclose');
+		if(!$this->session->userdata('admin')){
+			redirect('admin');
+		}
+		else{
+			$this->load->view('templates/html');
+			$this->load->view('templates/headers/header-kelas');
+			$this->load->view('kelas/index', $data);
+			$this->load->view('templates/htmlclose');
+		}
 	}
 
 	public function tambah(){
